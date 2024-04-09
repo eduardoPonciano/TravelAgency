@@ -45,10 +45,10 @@ pode-se utilizar a imagem docker do activemq
 
 2. **Configuração do Banco de Dados PostgreSQL:**
 
-.Instale o PostgreSQL e crie um banco de dados para cada módulo.
-.A configuração do banco nos modulos Configure as credenciais do banco de dados nos arquivos de propriedades de cada módulo
+.Configure ou instale o PostgreSQL, e recomendo utilizar uma base de dados para cada módulo ou separar ppr schemas.
+.Apos a configuração das credenciais do banco de dados, preencha os arquivos de propriedades de cada módulo
 
-pode-se utilizar a imagem docker do activemq
+Caso necessite instalar, pode-se facilmente utilizar a imagem docker do postgres
 
 `docker pull postgres`
 
@@ -56,7 +56,7 @@ pode-se utilizar a imagem docker do activemq
 
  Antes de iniciar a aplicação, prepare a base de dados executando os seguintes passos:
     
-- Execute os scripts SQL para criar os esquemas dos módulos. Os scripts devem ser ajustados conforme necessário, pois os esquemas atualmente estão separados por módulos com os seguintes nomes: `modulo_car_rental`, `modulo_flight`, `modulo_hotel` e `modulo_user`.
+- Configure a base para cada modulo caso necessario. Atualmente estão distribuidos em schemas diferentes, separados por módulos com os seguintes nomes: `modulo_car_rental`, `modulo_flight`, `modulo_hotel` e `modulo_user`.
     
 - Certifique-se de preparar os dados necessários para cada módulo executando os scripts de carga apropriados.
   os scripts se encontram no modulo correspondente [travel-agency-app ,travel-agency-car-rental e travel-agency-hotel]
