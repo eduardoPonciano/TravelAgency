@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/layout-main}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Escolha sua Companhia Aérea e Voo</title>
+    <th:block th:insert="~{fragment/leaflet :: leaflet-css}"></th:block>
+    <link rel="stylesheet" th:href="@{/css/styles-defaul.css}">
+    <style>
+       
+
+        .container2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .companhia {
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        .companhia img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .selected {
+            border-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+<th:block layout:fragment="content">
+    <div class="content container pt-5">
+		<div class="col-md-8 offset-md-2">
+			<div class="card">
+				<div class="card-header">
+                    <h1>Escolha sua Companhia Aérea e Voo</h1>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <label for="companhia">Selecione uma Companhia Aérea:</label>
+                        <select id="companhia" name="companhia">
+                            <option value="" selected disabled>Selecione uma Companhia Aérea</option>
+                            <option value="avianca">Avianca</option>
+                            <option value="azul">Azul</option>
+                            <option value="latam">LATAM</option>
+                            <!-- Adicione mais opções de companhias aéreas conforme necessário -->
+                        </select>
+                        <button id="escolher" class="btn btn-primary">Buscar Voos</button>
+                    </div>
+                    <br>
+				    <form th:action="@{/airplane/assentos}" th:object="${airplaneDTO}" method="post">
+						
+                        
+				        <input type="hidden" id="horarioSelecionado" th:field="*{horario}">
+						<input type="hidden" id="companhiaSelecionada" th:field="*{companhia}">
+				        <div class="container2" id="voosContainer">
+                        <!-- Aqui serão inseridos os voos disponíveis -->
+				        </div>
+				        <br>
+				        <button type="submit" id="enviar" style="display: none;"  class="btn btn-primary btn-lg">Escolher Voo</button> <!-- Botão de enviar oculto inicialmente -->
+				    </form>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+    <script>
+        // Função para obter os voos disponíveis com base na companhia aérea selecionada
+        function getVoos(companhia) {
+            switch (companhia) {
+                case "avianca":
+                    return [
+                        { horario: "08:00", assentosDisponiveis: 150 },
+                        { horario: "12:00", assentosDisponiveis: 100 },
+                        { horario: "18:00", assentosDisponiveis: 80 },
+                    ];
+                case "azul":
+                    return [
+                        { horario: "09:00", assentosDisponiveis: 120 },
+                        { horario: "14:00", assentosDisponiveis: 90 },
+                        { horario: "20:00", assentosDisponiveis: 70 },
+                    ];
+                case "latam":
+                    return [
+                        { horario: "10:00", assentosDisponiveis: 130 },
+                        { horario: "16:00", assentosDisponiveis: 110 },
+                        { horario: "22:00", assentosDisponiveis: 60 },
+                    ];
+                // Adicione mais casos conforme necessário
+                default:
+                    return [];
+            }
+        }
+
+        // Função para exibir os voos disponíveis na página
+        function exibirVoos() {
+            var companhia = document.getElementById('companhia').value;
+            var voos = getVoos(companhia);
+            var container = document.getElementById('voosContainer');
+            container.innerHTML = ''; // Limpa o conteúdo anterior
+
+            voos.forEach(function (voo) {
+                var vooElement = document.createElement('div');
+                vooElement.classList.add('companhia');                
+                vooElement.id = voo.id;
+                var horario = document.createElement('h3');
+                horario.textContent = "Horário: " + voo.horario;
+                var assentosDisponiveis = document.createElement('p');
+                assentosDisponiveis.textContent = "Assentos Disponíveis: " + voo.assentosDisponiveis;
+                vooElement.appendChild(horario);
+                vooElement.appendChild(assentosDisponiveis);
+                container.appendChild(vooElement);
+
+                // Adiciona um ouvinte de evento para marcar o voo como selecionado ao clicar nele
+                vooElement.addEventListener('click', function () {
+                    // Remove a classe 'selected' de todos os voos
+                    document.querySelectorAll('.companhia').forEach(function (vooElement) {
+                        vooElement.classList.remove('selected');
+                    });
+                    // Adiciona a classe 'selected' ao voo clicado
+                    vooElement.classList.add('selected');
+                    // Preenche os campos ocultos com os valores selecionados
+                    document.getElementById('horarioSelecionado').value = voo.horario;
+                    document.getElementById('companhiaSelecionada').value = companhia;
+                    // Exibe o botão de enviar
+                    document.getElementById('enviar').style.display = 'block';
+                
+                });
+            });
+        }
+
+        // Chama a função ao carregar a página
+        window.onload = exibirVoos;
+
+        // Adiciona um ouvinte de evento para o clique no botão "Buscar Voos"
+        var botaoEscolher = document.getElementById('escolher');
+        botaoEscolher.addEventListener('click', function () {
+            exibirVoos();
+        });
+    </script>
+
+</th:block>
+</body>
+</html>

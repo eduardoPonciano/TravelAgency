@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout-main}">
+<head>
+    <title>Confirmação da Reserva</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success d-flex justify-content-center align-items-center">
+                    <i class="bi bi-check-circle-fill fs-5 me-2"></i>
+                    <span class="fs-5">Sua reserva foi confirmada!</span>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Confirmação da Reserva</h2>
+                    </div>
+                    <div class="card-body">
+                        <h5>Confirmation Number:</h5>
+                        <p class="mb-3" th:text="${bookingDTO.confirmationNumber}"></p>
+                        <hr>
+                        <h3 class="mb-2" th:text="${bookingDTO.hotelName}">Hotel</h3>
+                        <p class="small mb-4" th:text="${bookingDTO.hotelAddress.addressLine + ', ' + bookingDTO.hotelAddress.city + ', ' + bookingDTO.hotelAddress.country}"></p>
+                        <div class="row text-center my-5">
+                            <div class="col-md-4">
+                                <h5>Chegada</h5>
+                                <p th:text="${bookingDTO.checkinDate}"></p>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Saida</h5>
+                                <p th:text="${bookingDTO.checkoutDate}"></p>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Duração</h5>
+                                <p th:text="${days} + ' dia(s)'"></p>
+                            </div>
+                        </div>
+                        <h5>Quartos:</h5>
+                        <ul class="mb-3">
+                            <li th:each="room : ${bookingDTO.roomSelections}">
+                                <span th:text="${room.count}"></span> x <span th:text="${room.roomType}"></span>
+                            </li>
+                        </ul>
+                        <!--
+                         <h5>Companhia Aerea:</h5>
+                        <div class="row text-center my-5">
+                            <div class="col-md-4">
+                                <h5>Companhia</h5>
+                                <p th:text="${airplaneDTO.companhia}"></p>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Horario</h5>
+                            	<p th:text="${airplaneDTO.horario}"></p>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Assento</h5>
+                            	<p th:text="${airplaneDTO.assento}"></p>
+                            </div>
+                        </div>
+                         <h5>Aluguel de Carro:</h5>
+                        <div class="row text-center my-5">
+                            <div class="col-md-4">
+                                <h5>Carro</h5>
+                            <p th:text="${carDTO.modelo}"></p>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Marca</h5>
+                            <p th:text="${carDTO.marca}"></p>
+                            </div>
+                        </div>
+                        -->
+                       
+                        
+                        <hr>
+                        <h3>Preço Total:</h3>
+                        <p class="mb-3" th:text="'$ ' + ${#numbers.formatDecimal(bookingDTO.totalPrice, 1, 'COMMA', 2, 'POINT')}"></p>
+                        <h5 class="small">Meio de Pagamento:</h5>
+                        <p class="small mb-3" th:text="${bookingDTO.paymentMethod}"></p>
+                        <hr>
+                        <h5>Reservado para:</h5>
+                        <p class="mb-2">Nome: <span th:text="${bookingDTO.customerName}"></span></p>
+                        <p class="mb-3">Email: <span th:text="${bookingDTO.customerEmail}"></span></p>
+                    </div>
+                </div>
+                <div class="mt-3 text-end">
+                    <a href="/" class="btn btn-outline-primary">Voltar a pagina Principal</a>
+                    <a href="/customer/bookings" class="btn btn-primary">Minhas reservas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

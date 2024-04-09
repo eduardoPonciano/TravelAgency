@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/layout-main}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Escolha seu Destino de Viagem</title>
+  
+    <link rel="stylesheet" th:href="@{/css/styles-defaul.css}">
+	<th:block th:insert="~{fragment/leaflet :: leaflet-css}"></th:block>
+</head>
+<body>
+	<th:block layout:fragment="content">
+
+    <div class="content container pt-5">
+				<div class="col-md-8 offset-md-2">
+					<div class="card">
+						<div class="card-header">
+							<h1>Escolha seu Destino de Viagem</h1>
+						</div>
+						<div class="card-body">
+							<form action="/turismo" method="get">
+								<label for="pais">Selecione um país:</label>
+								<select id="pais" name="pais">
+									<option value="" selected disabled>Selecione um país</option>
+									<option value="brasil">Brasil</option>
+									<option value="eua">Estados Unidos</option>
+									<option value="franca">França</option>
+									<option value="italia">Itália</option>
+									<!-- Adicione mais opções de países conforme necessário -->
+								</select>
+								<br><br>
+								<button type="submit">Escolher</button>
+							</form>
+						</div>
+					</div>
+				</div>
+    </div>
+	</th:block>
+</body>
+
+</html>

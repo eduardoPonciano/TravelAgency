@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/layout-main}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Escolha seu Destino de Viagem</title>
+	<th:block th:insert="~{fragment/leaflet :: leaflet-css}"></th:block>
+    <link rel="stylesheet" th:href="@{/css/styles-defaul.css}">
+    <style>
+        .container2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .produto {
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            cursor: pointer; /* Adiciona cursor de ponteiro ao passar por cima */
+        }
+
+        .produto img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .selected {
+            border-color: blue; /* Altera a cor da borda quando selecionado */
+        }
+    </style>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="content container pt-5">
+		<div class="col-md-8 offset-md-2">
+			<div class="card">
+				<div class="card-header">
+					<h1>Escolha seu Destino de Viagem</h1>
+				</div>
+				<div class="card-body">
+				    <div>
+				        <label for="pais">Selecione um país:</label>
+				        <select id="pais" name="pais">
+				            <option value="" selected disabled>Selecione um país</option>
+				            <option value="brasil">Brasil</option>
+				            <option value="eua">Estados Unidos</option>
+				            <option value="franca">França</option>
+				            <option value="italia">Itália</option>
+				            <!-- Adicione mais opções de países conforme necessário -->
+				        </select>
+				        <button id="escolher"  class="btn btn-primary">Procurar Locais</button>
+				    </div>
+				    <br>
+				    <form th:action="@{/search}" th:object="${hotelSearchDTO}" method="post">
+				        <input type="hidden" id="pontoTuristicoSelecionado" th:field="*{city}">
+				        <div class="container2" id="pontosTuristicosContainer">
+				            <!-- Aqui serão inseridas as caixas de produto -->
+				        </div>
+				        <br>
+				        <button type="submit" id="enviar" style="display: none;"  class="btn btn-primary btn-lg">Escolher hotel</button> <!-- Botão de enviar oculto inicialmente -->
+				    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+    <script>
+        // Função para obter os pontos turísticos com base no país selecionado
+        function getPontosTuristicos(pais) {
+            switch (pais) {
+                case "brasil":
+                    return [
+                        { id: "Rio de Janeiro", nome: "Cristo Redentor", imagem: "cristo-redentor.jpg", descricao: "Um dos símbolos do Rio de Janeiro e do Brasil." },
+                        { id: "Rio de Janeiro", nome: "Pão de Açúcar", imagem: "pao-de-acucar.jpg", descricao: "Ponto turístico com vista panorâmica da cidade do Rio de Janeiro." },
+                        // Adicione mais pontos turísticos do Brasil conforme necessário
+                    ];
+                case "eua":
+                    return [
+                        { id: "Nova Yorque", nome: "Statue of Liberty", imagem: "statue-of-liberty.jpg", descricao: "Um dos símbolos dos Estados Unidos localizado em Nova Iorque." },
+                        { id: "Grand Canyon", nome: "Grand Canyon", imagem: "grand-canyon.jpg", descricao: "Desfiladeiro natural localizado no Arizona." },
+                        // Adicione mais pontos turísticos dos Estados Unidos conforme necessário
+                    ];
+                case "franca":
+                    return [
+                        { id: "Paris", nome: "Torre Eiffel", imagem: "torre-eiffel.jpg", descricao: "Um dos ícones mais famosos do mundo, localizado em Paris." },
+                        { id: "Paris", nome: "Museu do Louvre", imagem: "museu-do-louvre.jpg", descricao: "Um dos maiores e mais famosos museus do mundo." },
+                        // Adicione mais pontos turísticos da França conforme necessário
+                    ];
+                // Adicione mais casos conforme necessário
+                default:
+                    return [];
+            }
+        }
+
+        // Função para exibir os pontos turísticos na página
+        function exibirPontosTuristicos() {
+            var pais = document.getElementById('pais').value;
+            var pontosTuristicos = getPontosTuristicos(pais);
+            var container = document.getElementById('pontosTuristicosContainer');
+            container.innerHTML = ''; // Limpa o conteúdo anterior
+
+            pontosTuristicos.forEach(function(ponto) {
+                var produto = document.createElement('div');
+                produto.classList.add('produto');
+                produto.id = ponto.id; // Define o id do produto
+                var imagem = document.createElement('img');
+                imagem.src = "img/locais/" + ponto.imagem;
+                var nome = document.createElement('h2');
+                nome.textContent = ponto.nome;
+                var descricao = document.createElement('p');
+                descricao.textContent = ponto.descricao;
+                produto.appendChild(imagem);
+                produto.appendChild(nome);
+                produto.appendChild(descricao);
+                container.appendChild(produto);
+
+                // Adiciona um ouvinte de evento para marcar o produto como selecionado ao clicar nele
+                produto.addEventListener('click', function() {
+                    // Remove a classe 'selected' de todos os produtos
+                    document.querySelectorAll('.produto').forEach(function(produto) {
+                        produto.classList.remove('selected');
+                    });
+                    // Adiciona a classe 'selected' ao produto clicado
+                    produto.classList.add('selected');
+                    // Preenche os campos ocultos com os valores selecionados
+                    document.getElementById('pontoTuristicoSelecionado').value = ponto.id;
+                    // Exibe o botão de enviar
+                    document.getElementById('enviar').style.display = 'block';
+                });
+            });
+        }
+
+        // Chama a função ao carregar a página
+        window.onload = exibirPontosTuristicos;
+
+        // Adiciona um ouvinte de evento para o clique no botão "Escolher"
+        var botaoEscolher = document.getElementById('escolher');
+        botaoEscolher.addEventListener('click', function() {
+            exibirPontosTuristicos();
+        });
+    </script>
+    
+</th:block>
+</body>
+</html>

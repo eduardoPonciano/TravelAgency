@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/layout-main}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airplane Seats</title>
+    
+    <th:block th:insert="~{fragment/leaflet :: leaflet-css}"></th:block>
+    <link rel="stylesheet" th:href="@{/css/styles-defaul.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    
+    
+</head>
+<body>
+
+<th:block layout:fragment="content">
+    <div class="content container pt-5">
+		<div class="col-md-8 offset-md-2">
+			<div class="card">
+				<div class="card-header">
+	    			<h2>Escolha seu Assento</h2>
+    			</div>
+	            <div class="card-body">
+				    <div class="center-horizontally">
+					    <!-- First Row -->
+					    <div class="row">
+					        <div class="seat">
+					            <input type="checkbox" id="seat1A" name="Assento 1A" onchange="checkOnlyOne(this)">
+					            <label for="seat1A">1A</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat1B" name="Assento 1B" onchange="checkOnlyOne(this)">
+					            <label for="seat1B">1B</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat1C" name="Assento 1C" onchange="checkOnlyOne(this)">
+					            <label for="seat1C">1C</label>
+					        </div>
+					        <div class="corridor"></div> <!-- Corridor between rows -->
+					        <div class="seat">
+					            <input type="checkbox" id="seat1D" name="Assento 1D" onchange="checkOnlyOne(this)">
+					            <label for="seat1D">1D</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat1E" name="Assento 1E" onchange="checkOnlyOne(this)">
+					            <label for="seat1E">1E</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat1F" name="Assento 1F" onchange="checkOnlyOne(this)">
+					            <label for="seat1F">1F</label>
+					        </div>
+					    </div>
+					    <!-- Second Row -->
+					    <div class="row">
+					        <div class="seat">
+					            <input type="checkbox" id="seat2A" name="Assento 2A" onchange="checkOnlyOne(this)">
+					            <label for="seat2A">2A</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat2B" name="Assento 2B" onchange="checkOnlyOne(this)">
+					            <label for="seat2B">2B</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat2C" name="Assento 2C" onchange="checkOnlyOne(this)">
+					            <label for="seat2C">2C</label>
+					        </div>
+					        <div class="corridor"></div> <!-- Corridor between rows -->
+					        <div class="seat">
+					            <input type="checkbox" id="seat2D" name="Assento 2D" onchange="checkOnlyOne(this)">
+					            <label for="seat2D">2D</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat2E" name="Assento 2E" onchange="checkOnlyOne(this)">
+					            <label for="seat2E">2E</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat2F" name="Assento 2F" onchange="checkOnlyOne(this)">
+					            <label for="seat2F">2F</label>
+					        </div>
+					    </div>
+					    
+					    <!-- Third Row -->
+					    <div class="row">
+					        <div class="seat">
+					            <input type="checkbox" id="seat3A" name="Assento 3A" onchange="checkOnlyOne(this)">
+					            <label for="seat3A">3A</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat3B" name="Assento 3B" onchange="checkOnlyOne(this)">
+					            <label for="seat3B">3B</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat3C" name="Assento 3C" onchange="checkOnlyOne(this)">
+					            <label for="seat3C">3C</label>
+					        </div>
+					        <div class="corridor"></div> <!-- Corridor between rows -->
+					        <div class="seat">
+					            <input type="checkbox" id="seat3D" name="Assento 3D" onchange="checkOnlyOne(this)">
+					            <label for="seat3D">3D</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat3E" name="Assento 3E" onchange="checkOnlyOne(this)">
+					            <label for="seat3E">3E</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat3F" name="Assento 3F" onchange="checkOnlyOne(this)">
+					            <label for="seat3F">3F</label>
+					        </div>
+					    </div>
+					    
+					    <!-- Third Row -->
+					    <div class="row">
+					        <div class="seat">
+					            <input type="checkbox" id="seat4A" name="Assento 4A" onchange="checkOnlyOne(this)">
+					            <label for="seat4A">4A</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat4B" name="Assento 4B" onchange="checkOnlyOne(this)">
+					            <label for="seat4B">4B</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat4C" name="Assento 4C" onchange="checkOnlyOne(this)">
+					            <label for="seat4C">4C</label>
+					        </div>
+					        <div class="corridor"></div> <!-- Corridor between rows -->
+					        <div class="seat">
+					            <input type="checkbox" id="seat4D" name="Assento 4D" onchange="checkOnlyOne(this)">
+					            <label for="seat4D">4D</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat4E" name="Assento 4E" onchange="checkOnlyOne(this)">
+					            <label for="seat4E">4E</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat4F" name="Assento 4F" onchange="checkOnlyOne(this)">
+					            <label for="seat4F">4F</label>
+					        </div>
+					    </div>	
+					    
+					    <!-- Third Row -->
+					    <div class="row">
+					        <div class="seat">
+					            <input type="checkbox" id="seat5A" name="Assento 5A" onchange="checkOnlyOne(this)">
+					            <label for="seat5A">5A</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat5B" name="Assento 5B" onchange="checkOnlyOne(this)">
+					            <label for="seat5B">5B</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat5C" name="Assento 5C" onchange="checkOnlyOne(this)">
+					            <label for="seat5C">5C</label>
+					        </div>
+					        <div class="corridor"></div> <!-- Corridor between rows -->
+					        <div class="seat">
+					            <input type="checkbox" id="seat5D" name="Assento 5D" onchange="checkOnlyOne(this)">
+					            <label for="seat5D">5D</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat5E" name="Assento 5E" onchange="checkOnlyOne(this)">
+					            <label for="seat5E">5E</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat5F" name="Assento 5F" onchange="checkOnlyOne(this)">
+					            <label for="seat5F">5F</label>
+					        </div>
+					    </div>
+					    
+					    <!-- Third Row -->
+					    <div class="row">
+					        <div class="seat">
+					            <input type="checkbox" id="seat6A" name="Assento 6A" onchange="checkOnlyOne(this)">
+					            <label for="seat6A">6A</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat6B" name="Assento 6B" onchange="checkOnlyOne(this)">
+					            <label for="seat6B">6B</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat6C" name="Assento 6C" onchange="checkOnlyOne(this)">
+					            <label for="seat6C">6C</label>
+					        </div>
+					        <div class="corridor"></div> <!-- Corridor between rows -->
+					        <div class="seat">
+					            <input type="checkbox" id="seat6D" name="Assento 6D" onchange="checkOnlyOne(this)">
+					            <label for="seat6D">6D</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat6E" name="Assento 6E" onchange="checkOnlyOne(this)">
+					            <label for="seat6E">6E</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat6F" name="Assento 6F" onchange="checkOnlyOne(this)">
+					            <label for="seat6F">6F</label>
+					        </div>
+					    </div>
+					    
+					    <!-- Third Row -->
+					    <div class="row">
+					        <div class="seat">
+					            <input type="checkbox" id="seat7A" name="Assento 7A" onchange="checkOnlyOne(this)">
+					            <label for="seat7A">7A</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat7B" name="Assento 7B" onchange="checkOnlyOne(this)">
+					            <label for="seat7B">7B</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat7C" name="Assento 7C" onchange="checkOnlyOne(this)">
+					            <label for="seat7C">7C</label>
+					        </div>
+					        <div class="corridor"></div> <!-- Corridor between rows -->
+					        <div class="seat">
+					            <input type="checkbox" id="seat7D" name="Assento 7D" onchange="checkOnlyOne(this)">
+					            <label for="seat7D">7D</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat7E" name="Assento 7E" onchange="checkOnlyOne(this)">
+					            <label for="seat7E">7E</label>
+					        </div>
+					        <div class="seat">
+					            <input type="checkbox" id="seat7F" name="Assento 7F" onchange="checkOnlyOne(this)">
+					            <label for="seat7F">7F</label>
+					        </div>
+					    </div>
+				    </div>
+				    <form th:action="@{/car-rental}" th:object="${airplaneDTO}" method="post">
+						
+						
+						
+				        <input type="hidden" id="selectedSeat"  th:field="*{assento}">
+				        <button type="submit" id="enviar"  class="btn btn-primary btn-lg">Confirmar Assento</button>
+				    </form>
+			    </div>
+            </div>
+        </div>
+	</div>
+</div>
+    
+    <script th:src="@{/js/assentos.js}"></script>
+</th:block>
+   
+</body>
+</html>

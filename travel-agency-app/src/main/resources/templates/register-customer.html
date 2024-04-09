@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout-main}">
+<head>
+    <title>Registro</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Cadastro de cliente</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" th:action="@{/register/customer}" th:object="${user}">
+                           
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="name">Nome:</label>
+                                <input class="form-control" id="name" type="text" th:field="*{name}"
+                                       placeholder="Preencha seu primeiro nome">
+                                <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="lastName">Sobrenome:</label>
+                                <input class="form-control" id="lastName" type="text" th:field="*{lastName}"
+                                       placeholder="Preencha seu sobrenome">
+                                <p class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="username">Email:</label>
+                                <input class="form-control" id="username" type="email" th:field="*{username}"
+                                       placeholder="Preencha se endereço de de e-mail" autofocus>
+                                <p class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="password">Senha:</label>
+                                <input class="form-control" id="password" type="password" th:field="*{password}"
+                                       placeholder="Preencha sua senha">
+                                <p class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                            </div>
+                            <div class="form-group mb-3">
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                <span>Ja tem acesso? <a th:href="@{/login}">Acesse</a></span>
+                            </div>
+                            <div class="alert alert-success" th:if="${param.success}">
+                                Cadastrado com Sucesso!
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

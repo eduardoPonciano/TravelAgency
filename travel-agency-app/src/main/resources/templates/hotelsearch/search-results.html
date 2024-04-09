@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout-main}">
+<head>
+    <title>Resultados de Busca</title>
+    <link rel="stylesheet" th:href="@{/css/styles-defaul.css}">
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="content container pt-5">
+		<div class="col-md-8 offset-md-2">
+			<div class="card">
+				<div class="card-header">
+                    <h2>Resultados para "<span th:text="${city}">Cidade</span>"</h2>
+                    </div>
+                <div class="card-body">
+                    <table class="table border-0">
+                        <tbody>
+                        <tr>
+                            <td class="border-0 text-nowrap py-0" style="width:20%"><h5>Periodo:</h5></td>
+                            <td class="border-0 py-0"><h5><span th:text="${days}">0</span> diarias</h5></td>
+                        </tr>
+                        <tr>
+                            <td class="border-0 text-nowrap py-0" style="width:20%"><h5>Chegada:</h5></td>
+                            <td class="border-0 py-0"><h5><span th:text="${checkinDate}"></span></h5></td>
+                        </tr>
+                        <tr>
+                            <td class="border-0 text-nowrap py-0" style="width:20%"><h5>Saida:</h5></td>
+                            <td class="border-0 py-0"><h5><span th:text="${checkoutDate}"></span></h5></td>
+                        </tr>
+                        </tbody>
+                    </table>
+               		<div th:if="${noHotelsFound}" class="alert alert-danger text-center">
+                    	<p class="fs-5">
+							Infelizmente não encontramos nenhum hotel que atenda suas necessidades. 
+							<br>Tente novamente, informando outra data ou cidade.
+						</p>
+                    	<div class="mt-3">
+                        	<a href="/search" class="btn btn-primary">Pesquisar novamente</a>
+                    	</div>
+                	</div>
+                	<div th:each="hotel : ${hotels}">
+                   		<div class="card mb-3">
+	                        <div class="row g-0">
+	                            <div class="col-md-12">
+	                                <div class="card-body">
+	                                    <h5 class="card-title fw-bold" th:text="${hotel.name}">Nome do Hotel</h5>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="row g-0">
+	                                <div class="card-body">
+	                                    <div class="row">
+	                                        <div class="col-6">
+	                                            <p class="card-text fw-bold">Acomodações Disponiveis</p>
+	                                            <div class="row">
+	                                                <div class="col-6">
+	                                                    <p class="card-text">Solteiro:</p>
+	                                                    <p class="card-text">Casal:</p>
+	                                                </div>
+	                                                <div class="col-6">
+	                                                    <p class="card-text"><span
+	                                                            th:text="${hotel.maxAvailableSingleRooms}">0</span></p>
+	                                                    <p class="card-text"><span
+	                                                            th:text="${hotel.maxAvailableDoubleRooms}">0</span></p>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-6">
+	                                            <p class="card-text fw-bold">Preço da diária</p>
+	                                            <th:block th:each="room : ${hotel.roomDTOs}">
+	                                                <p class="card-text" th:if="${room.roomType.name() == 'SOLTEIRO'}">
+	                                                    R$ <span th:text="${room.pricePerNight}"></span>
+	                                                </p>
+	                                                <p class="card-text" th:if="${room.roomType.name() == 'CASAL'}">
+	                                                    R$ <span th:text="${room.pricePerNight}"></span>
+	                                                </p>
+	                                            </th:block>
+	                                        </div>
+	                                    </div>
+	                            </div>
+	                            <div class="col-md-2 d-flex align-items-center">
+	                                <a th:href="@{/hotel-details/{id}(id=${hotel.id}, checkinDate=${checkinDate}, checkoutDate=${checkoutDate})}" class="btn btn-primary w-100 my-2 mx-3">Reservar</a>
+	                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

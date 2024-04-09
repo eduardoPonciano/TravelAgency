@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/layout-main}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Escolha o carro que deseja alugar</title>
+    <th:block th:insert="~{fragment/leaflet :: leaflet-css}"></th:block>
+    <link rel="stylesheet" th:href="@{/css/styles-defaul.css}">
+    <style>
+        .container2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .produto {
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            cursor: pointer; /* Adiciona cursor de ponteiro ao passar por cima */
+        }
+
+        .produto img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .selected {
+            border-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+<th:block layout:fragment="content">
+    <div class="content container pt-5">
+		<div class="col-md-8 offset-md-2">
+			<div class="card">
+				<div class="card-header">
+                    <h1>Escolha o carro que deseja alugar</h1>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <label for="marca">Selecione uma marca:</label>
+                        <select id="marca" name="veiculo">
+                            <option value="" selected disabled>Selecione um Marca</option>
+                            <option value="chevrolet">Chevrolet</option>
+                            <option value="fiat">Fiat</option>
+                            <option value="renault">Renault</option>
+                            <option value="vw">VW</option>
+                            <!-- Adicione mais opções de companhias aéreas conforme necessário -->
+                        </select>
+                        <button id="escolher" class="btn btn-primary">Buscar Carros</button>
+                    </div>
+                    <br>
+				    <form th:action="@{/booking/initiate}" th:object="${carDTO}" id="car-form" method="post">
+				        <input type="hidden" id="carroSelecionado" th:field="*{modelo}">
+				        <input type="hidden" id="marcaSelecionado" th:field="*{marca}">
+				        <div class="container2" id="carrosContainer">
+                        <!-- Aqui serão inseridos os carros disponíveis -->
+				        </div>
+				        <br>
+				        <button type="submit" id="enviar" style="display: none;"  class="btn btn-primary btn-lg">Escolher Carro</button> <!-- Botão de enviar oculto inicialmente -->
+				    </form>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+    <script>
+	  // Função para enviar os dados para o controller
+		function sendDataToController() {
+		    var formData = $("#car-form").serialize(); // Obter dados do formulário
+		
+		    $.ajax({
+		        type: "POST", // Métostore-car-datado HTTP
+		        url: "/store-car-data", // Endpoint para armazenar os dados na sessão
+		        data: formData, // Dados do formulário
+		        success: function (response) {
+		            console.log("Dados enviados para o controller:", response);
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("Erro ao enviar dados para o controller:", error);
+		        }
+		    });
+		}
+        // Função para obter os carros  disponíveis com base na companhia aérea selecionada
+        function getCarros(marca) {
+            switch (marca) {
+                case "fiat":
+                    return [
+                        { id: "Uno", nome: "Uno", imagem: "uno.jpg", descricao: "R$ 90,00 a diaria" },
+                        { id: "Mobi", nome: "Mobi", imagem: "mobi.jpg", descricao: "R$ 100,00 a diaria" },
+                        // Adicione mais carros da fiat conforme necessário
+                    ];
+                case "chevrolet":
+                    return [
+                        { id: "Onix ", nome: "Onix ", imagem: "onix.jpg", descricao: "R$ 110,00 a diaria" },
+                        { id: "Corsa", nome: "Corsa", imagem: "corsa.jpg", descricao: "R$ 900,00 a diaria" },
+                        // Adicione mais carros da chevrolet conforme necessário
+                    ];
+                case "renault":
+                    return [
+                        { id: "KWID", nome: "KWID", imagem: "kwid.jpg", descricao: "R$ 80,00 a diaria." },
+                        { id: "Sandero", nome: "Sandero", imagem: "sandero.jpg", descricao: "R$ 110,00 a diaria" },
+                        // Adicione mais carros da renault conforme necessário
+                    ];
+                case "vw":
+                    return [
+                        { id: "Gol", nome: "Gol", imagem: "gol.jpg", descricao: "R$ 130,00 a diaria." },
+                        { id: "Fox", nome: "Fox", imagem: "fox.jpg", descricao: "R$ 160,00 a diaria" },
+                        // Adicione mais carros da vw conforme necessário
+                    ];
+                // Adicione mais casos conforme necessário
+                default:
+                    return [];
+            }
+        }
+
+       
+        // Função para exibir os carros na página
+        function exibirCarros() {
+            var marca = document.getElementById('marca').value;
+            var carros = getCarros(marca);
+            var container = document.getElementById('carrosContainer');
+            container.innerHTML = ''; // Limpa o conteúdo anterior
+
+            carros.forEach(function(ponto) {
+                var produto = document.createElement('div');
+                produto.classList.add('produto');
+                produto.id = ponto.id; // Define o id do produto
+                var imagem = document.createElement('img');
+                imagem.src = "img/car/" + ponto.imagem;
+                var nome = document.createElement('h2');
+                nome.textContent = ponto.nome;
+                var descricao = document.createElement('p');
+                descricao.textContent = ponto.descricao;
+                produto.appendChild(imagem);
+                produto.appendChild(nome);
+                produto.appendChild(descricao);
+                container.appendChild(produto);
+
+                // Adiciona um ouvinte de evento para marcar o produto como selecionado ao clicar nele
+                produto.addEventListener('click', function() {
+                    // Remove a classe 'selected' de todos os produtos
+                    document.querySelectorAll('.produto').forEach(function(produto) {
+                        produto.classList.remove('selected');
+                    });
+                    // Adiciona a classe 'selected' ao produto clicado
+                    produto.classList.add('selected');
+                    // Preenche os campos ocultos com os valores selecionados
+                    document.getElementById('carroSelecionado').value = ponto.nome;
+                    document.getElementById('marcaSelecionado').value = marca;
+                    
+                    // Exibe o botão de enviar
+                    document.getElementById('enviar').style.display = 'block';
+                    sendDataToController();
+                });
+            });
+        }
+
+        // Chama a função ao carregar a página
+        window.onload = exibirCarros;
+
+        // Adiciona um ouvinte de evento para o clique no botão "Escolher"
+        var botaoEscolher = document.getElementById('escolher');
+        botaoEscolher.addEventListener('click', function() {
+            exibirCarros();
+        });
+    </script>
+
+</th:block>
+</body>
+</html>
