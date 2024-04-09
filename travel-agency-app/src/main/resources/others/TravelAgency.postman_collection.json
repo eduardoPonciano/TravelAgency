@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "20c674da-4ca8-417f-9397-eaa640549d62",
+		"name": "TravelAgency",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ralizar reserva",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n        \"hotel\":{\r\n            \"hotelId\":\"1\",\r\n            \"numeroQuarto\":\"35\",\r\n            \"checkinDate\":\"2024-09-04\",\r\n            \"checkoutDate\":\"2024-09-05\",\r\n            \"totalPrice\":\"150.00\"\r\n\r\n        },\"airplane\":{\r\n            \"idAirplane\":\"1\",\r\n            \"numeroAssento\":\"B35\",\r\n            \"checkinDate\":\"2024-09-04\",\r\n            \"checkoutDate\":\"2024-09-05\",\r\n            \"valor\":\"50.00\",\r\n            \"horario\":\"09:00\",\r\n            \"companhia\":\"Azul\",\r\n            \"totalPrice\":\"150.00\"\r\n\r\n        },\"car\":{\r\n            \"modelo\":\"mobi\",\r\n            \"marca\":\"fiat\",\r\n            \"checkinDate\":\"2024-09-04\",\r\n            \"checkoutDate\":\"2024-09-05\",\r\n            \"totalPrice\":\"150.00\"\r\n\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/booking/process",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"booking",
+						"process"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
