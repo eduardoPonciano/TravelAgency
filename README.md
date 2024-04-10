@@ -2,6 +2,17 @@
 Este é um exemplo de projeto de uma Agencia de viagem, onde a cada reserva feita pelo usuario, um quarto, um carro e asento de avião são reservados.
 Desenvolvido com spring boot, com a finalidade de gerar microserviços, utilizando ActiveMQ para mensageria assíncrona, eventos Publisher/Subscriber usando ApplicationEventPublisher, banco de dados PostgreSQL e uma arquitetura modular para facilitar a visualização dos módulos. para a parte MVC foi utilizado Thymeleaf para o front-end.
 
+# Arquitetura e Design
+A aplicação segue uma arquitetura de microserviços, onde cada funcionalidade específica é implementada como um serviço independente. Um gateway é utilizado como um ponto de entrada único para a aplicação, que é consumido pelo serviço de front-end para interagir com os diferentes módulos da aplicação.
+
+# Serviços de CRUD e Reserva
+Pensando na responsabilidade e coerência do domínio, os serviços de CRUD e os serviços de reserva estão no mesmo módulo com suas respectivas responsabilidades (hotel, carro, avião, usuário), garantindo assim o compartilhamento de lógicas e dados relevantes as funcionalidades.
+
+# Reserva através de Fila e Eventos
+Para realizar as reservas de viagens, os serviços utilizam um sistema de fila e eventos. Quando um usuário confirma uma reserva, os dados são enviados para uma fila de mensagens associada ao serviço responsável (por exemplo, serviço de reserva de hotel, serviço de reserva de carro). O serviço correspondente então processa a reserva, interagindo com o banco de dados e realizando as operações necessárias.
+
+Essa abordagem permite uma comunicação assíncrona entre os serviços, garantindo a escalabilidade e a resiliência do sistema. Além disso, o uso de eventos facilita a implementação de padrões de retry e rollback em caso de falhas durante o processamento da reserva.
+
 # Módulos do Projeto
 - **Módulo app:** que utiliza um mvc com thymelead para interface amigavel com o usuario
 - **Módulo de Aluguel de Carros:** Gerencia as operações relacionadas ao aluguel de carros.
