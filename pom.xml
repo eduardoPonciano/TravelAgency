@@ -10,8 +10,8 @@
         <relativePath/>
     </parent>
     
-    <groupId>br.com.eduardo.ponciano.travelagency</groupId>
-    <artifactId>travel-agency</artifactId>
+    <groupId>br.com.eponciano.ms.travelagency</groupId>
+    <artifactId>booking</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Travel Agency</name>
     <description>Travel Agency Project</description>
@@ -27,13 +27,13 @@
 	</developers>
     
      <modules>		 
-        <module>travel-agency-commons</module>
-        <module>travel-agency-app</module>
-        <module>travel-agency-user</module>
-        <module>travel-agency-hotel</module>
-        <module>travel-agency-car-rental</module>
-        <module>travel-agency-flight</module>
-        <module>travel-agency-payment</module>
+        <module>booking-commons</module>
+        <module>booking-app</module>
+        <module>booking-user</module>
+        <module>booking-hotel</module>
+        <module>booking-car</module>
+        <module>booking-airplane</module>
+        <module>booking-payment</module>
         <!-- Se necessário, adicione outros módulos aqui -->
     </modules>
 	<dependencies>
@@ -46,10 +46,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-boot-starter</artifactId>
-			<version>3.0.0</version>
+		<dependency> 
+		   <groupId>org.springdoc</groupId> 
+		   <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId> 
+		   <version>2.0.2</version> 
 		</dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
