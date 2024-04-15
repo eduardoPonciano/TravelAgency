@@ -5,8 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.AiplaneDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.CarDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.AiplaneDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.CarDTO;
 import jakarta.servlet.http.HttpSession;
 
 @Controller

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import br.com.eduardo.ponciano.travel.flight.model.Airplane;
+import br.com.eponciano.ms.booking.airplane.model.Airplane;
 
 @Service
 public interface AirplaneServiceTest {

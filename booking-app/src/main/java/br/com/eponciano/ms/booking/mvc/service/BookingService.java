@@ -2,7 +2,7 @@ package br.com.eponciano.ms.booking.mvc.service;
 
 import java.util.List;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.BookingInitiationDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.BookingInitiationDTO;
 import br.com.eponciano.ms.booking.mvc.model.Booking;
 import br.com.eponciano.ms.booking.mvc.model.dto.BookingDTO;
 

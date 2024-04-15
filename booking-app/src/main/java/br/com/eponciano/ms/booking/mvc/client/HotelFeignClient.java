@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelRegistrationDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelRegistrationDTO;
 import br.com.eponciano.ms.booking.mvc.model.Hotel;
 
 

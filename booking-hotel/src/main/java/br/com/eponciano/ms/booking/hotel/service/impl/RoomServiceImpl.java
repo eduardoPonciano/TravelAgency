@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.RoomDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.RoomDTO;
 import br.com.eponciano.ms.booking.hotel.mapper.RoomMapper;
 import br.com.eponciano.ms.booking.hotel.model.Hotel;
 import br.com.eponciano.ms.booking.hotel.model.Room;

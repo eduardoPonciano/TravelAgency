@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.AiplaneDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.BookingInitiationDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.CarDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.ProcesssBookingDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.AiplaneDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.BookingInitiationDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.CarDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.ProcesssBookingDTO;
 import br.com.eponciano.ms.booking.mvc.client.HotelFeignClient;
 import br.com.eponciano.ms.booking.mvc.client.UserFeignClient;
 import br.com.eponciano.ms.booking.mvc.jms.ProcessBookingPublish;

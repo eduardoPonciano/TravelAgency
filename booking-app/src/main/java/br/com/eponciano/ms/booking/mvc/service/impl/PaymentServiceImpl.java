@@ -2,7 +2,7 @@ package br.com.eponciano.ms.booking.mvc.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.BookingInitiationDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.BookingInitiationDTO;
 import br.com.eponciano.ms.booking.mvc.model.Booking;
 import br.com.eponciano.ms.booking.mvc.model.Payment;
 import br.com.eponciano.ms.booking.mvc.model.enums.Currency;

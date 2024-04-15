@@ -3,7 +3,7 @@ package br.com.eponciano.ms.booking.mvc.service;
 import java.util.List;
 import java.util.Optional;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.RoomDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.RoomDTO;
 import br.com.eponciano.ms.booking.mvc.model.Hotel;
 import br.com.eponciano.ms.booking.mvc.model.Room;
 

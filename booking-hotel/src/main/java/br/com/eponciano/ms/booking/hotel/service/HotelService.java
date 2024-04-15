@@ -2,8 +2,8 @@ package br.com.eponciano.ms.booking.hotel.service;
 
 import java.util.List;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelRegistrationDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelRegistrationDTO;
 import br.com.eponciano.ms.booking.hotel.model.Hotel;
 
 public interface HotelService {

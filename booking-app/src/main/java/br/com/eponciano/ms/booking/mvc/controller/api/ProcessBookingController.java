@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.ProcesssBookingDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.ProcesssBookingDTO;
 import br.com.eponciano.ms.booking.mvc.jms.ProcessBookingPublish;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

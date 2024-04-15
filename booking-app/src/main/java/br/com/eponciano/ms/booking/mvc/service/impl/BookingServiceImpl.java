@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.BookingInitiationDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.BookingInitiationDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelDTO;
 import br.com.eponciano.ms.booking.mvc.client.HotelFeignClient;
 import br.com.eponciano.ms.booking.mvc.model.BookedRoom;
 import br.com.eponciano.ms.booking.mvc.model.Booking;
@@ -169,7 +169,7 @@ public class BookingServiceImpl implements BookingService {
                 .checkoutDate(bookingInitiationDTO.getCheckoutDate())
                 .build();
 
-        for (br.com.eduardo.ponciano.travel.commons.model.dto.RoomSelectionDTO roomSelection : bookingInitiationDTO.getRoomSelections()) {
+        for (br.com.eponciano.ms.booking.commons.model.dto.RoomSelectionDTO roomSelection : bookingInitiationDTO.getRoomSelections()) {
             if (roomSelection.getCount() > 0) {
                 BookedRoom bookedRoom = BookedRoom.builder()
                         .booking(booking)

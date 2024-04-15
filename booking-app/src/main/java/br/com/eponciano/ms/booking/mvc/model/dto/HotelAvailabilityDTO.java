@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.RoomDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.RoomDTO;
 import lombok.Builder;
 import lombok.Data;
 

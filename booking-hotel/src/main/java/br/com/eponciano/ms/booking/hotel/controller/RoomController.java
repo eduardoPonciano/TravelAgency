@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.RoomDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.RoomDTO;
 import br.com.eponciano.ms.booking.hotel.model.Room;
 import br.com.eponciano.ms.booking.hotel.service.RoomService;
 

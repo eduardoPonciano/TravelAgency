@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.AiplaneDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.AiplaneDTO;
 import br.com.eponciano.ms.booking.mvc.model.dto.HotelSearchDTO;
 import jakarta.servlet.http.HttpSession;
 

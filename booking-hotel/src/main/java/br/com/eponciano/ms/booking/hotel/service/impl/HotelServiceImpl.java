@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelRegistrationDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelRegistrationDTO;
 import br.com.eponciano.ms.booking.hotel.exception.HotelAlreadyExistsException;
 import br.com.eponciano.ms.booking.hotel.mapper.HotelMapper;
 import br.com.eponciano.ms.booking.hotel.model.Address;

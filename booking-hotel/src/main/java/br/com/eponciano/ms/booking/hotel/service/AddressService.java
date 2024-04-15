@@ -1,6 +1,6 @@
 package br.com.eponciano.ms.booking.hotel.service;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.AddressDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.AddressDTO;
 import br.com.eponciano.ms.booking.hotel.model.Address;
 
 public interface AddressService {

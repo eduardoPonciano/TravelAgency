@@ -1,6 +1,6 @@
 package br.com.eponciano.ms.booking.hotel.mapper;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.BookingDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.BookingDTO;
 import br.com.eponciano.ms.booking.hotel.model.Booking;
 
 public class BookingMapper {

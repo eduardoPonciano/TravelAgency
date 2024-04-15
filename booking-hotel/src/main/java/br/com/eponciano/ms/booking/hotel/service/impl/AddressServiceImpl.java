@@ -3,7 +3,7 @@ package br.com.eponciano.ms.booking.hotel.service.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.AddressDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.AddressDTO;
 import br.com.eponciano.ms.booking.hotel.model.Address;
 import br.com.eponciano.ms.booking.hotel.repository.AddressRepository;
 import br.com.eponciano.ms.booking.hotel.service.AddressService;

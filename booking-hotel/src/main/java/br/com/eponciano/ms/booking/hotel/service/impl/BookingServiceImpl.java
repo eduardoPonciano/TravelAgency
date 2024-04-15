@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.AddressDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.BookingDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.BookingInitiationDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.AddressDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.BookingDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.BookingInitiationDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelDTO;
 import br.com.eponciano.ms.booking.hotel.mapper.HotelMapper;
 import br.com.eponciano.ms.booking.hotel.model.BookedRoom;
 import br.com.eponciano.ms.booking.hotel.model.Booking;
@@ -128,7 +128,7 @@ public class BookingServiceImpl implements BookingService {
                 .checkoutDate(bookingInitiationDTO.getCheckoutDate())
                 .build();
 
-        for (br.com.eduardo.ponciano.travel.commons.model.dto.RoomSelectionDTO roomSelection : bookingInitiationDTO.getRoomSelections()) {
+        for (br.com.eponciano.ms.booking.commons.model.dto.RoomSelectionDTO roomSelection : bookingInitiationDTO.getRoomSelections()) {
             if (roomSelection.getCount() > 0) {
                 BookedRoom bookedRoom = BookedRoom.builder()
                         .booking(booking)

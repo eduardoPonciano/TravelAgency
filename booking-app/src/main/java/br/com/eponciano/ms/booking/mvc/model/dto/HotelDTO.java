@@ -3,7 +3,7 @@ package br.com.eponciano.ms.booking.mvc.model.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.RoomDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.RoomDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.RoomType;
+import br.com.eponciano.ms.booking.commons.model.dto.RoomType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

@@ -28,9 +28,9 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.AddressDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelRegistrationDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.AddressDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelRegistrationDTO;
 import br.com.eponciano.ms.booking.hotel.controller.HotelController;
 import br.com.eponciano.ms.booking.hotel.model.Address;
 import br.com.eponciano.ms.booking.hotel.model.Hotel;

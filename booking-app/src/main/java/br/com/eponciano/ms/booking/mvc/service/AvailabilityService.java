@@ -3,7 +3,7 @@ package br.com.eponciano.ms.booking.mvc.service;
 import java.time.LocalDate;
 import java.util.List;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.RoomSelectionDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.RoomSelectionDTO;
 
 
 public interface AvailabilityService {

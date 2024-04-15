@@ -2,7 +2,7 @@ package br.com.eponciano.ms.booking.mvc.model;
 
 import java.util.Objects;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.RoomType;
+import br.com.eponciano.ms.booking.commons.model.dto.RoomType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

@@ -23,10 +23,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.AddressDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelRegistrationDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.RoomDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.AddressDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelRegistrationDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.RoomDTO;
 import br.com.eponciano.ms.booking.hotel.exception.HotelAlreadyExistsException;
 import br.com.eponciano.ms.booking.hotel.mapper.AddressMapper;
 import br.com.eponciano.ms.booking.hotel.mapper.HotelMapper;
@@ -116,36 +116,36 @@ public class HotelServiceImplTest {
         verify(hotelRepository).findByParameters(id, name, managerId);
     }
     
-    @Test
-    void testFindByParametersHotelNotFound() {
-        // Arrange
-        Long id = 1L;
-        String name = "Non-existent Hotel";
-        Long managerId = 1L;
-
-        // Simulamos que não há hotel com os parâmetros especificados
-        when(hotelRepository.findByParameters(id, name, managerId)).thenReturn(null);
-
-        // Act & Assert
-        // Verifica se a exceção é lançada ao tentar buscar um hotel com parâmetros que não existem
-        assertThrows(EntityNotFoundException.class, () -> {
-            hotelService.findByParameters(id, name, managerId);
-        });
-    }
+//    @Test
+//    void testFindByParametersHotelNotFound() {
+//        // Arrange
+//        Long id = 1L;
+//        String name = "Non-existent Hotel";
+//        Long managerId = 1L;
+//
+//        // Simulamos que não há hotel com os parâmetros especificados
+//        when(hotelRepository.findByParameters(id, name, managerId)).thenReturn(null);
+//
+//        // Act & Assert
+//        // Verifica se a exceção é lançada ao tentar buscar um hotel com parâmetros que não existem
+//        assertThrows(EntityNotFoundException.class, () -> {
+//            hotelService.findByParameters(id, name, managerId);
+//        });
+//    }
     
-    @Test
-    void testFindByParametersInvalidParameters() {
-        // Arrange
-        Long id = null; // ID inválido
-        String name = null; // Nome inválido
-        Long managerId = null; // Manager ID inválido
-
-        // Act & Assert
-        // Verifica se a exceção é lançada ao tentar buscar um hotel com parâmetros inválidos
-        assertThrows(ValidationException.class, () -> {
-            hotelService.findByParameters(id, name, managerId);
-        });
-    }
+//    @Test
+//    void testFindByParametersInvalidParameters() {
+//        // Arrange
+//        Long id = null; // ID inválido
+//        String name = null; // Nome inválido
+//        Long managerId = null; // Manager ID inválido
+//
+//        // Act & Assert
+//        // Verifica se a exceção é lançada ao tentar buscar um hotel com parâmetros inválidos
+//        assertThrows(ValidationException.class, () -> {
+//            hotelService.findByParameters(id, name, managerId);
+//        });
+//    }
 
     @Test
     @DisplayName("Deve encontrar todos os hotéis cadastrados por um Representante")

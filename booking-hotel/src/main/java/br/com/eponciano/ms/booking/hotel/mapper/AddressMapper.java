@@ -2,7 +2,7 @@ package br.com.eponciano.ms.booking.hotel.mapper;
 
 import org.springframework.util.StringUtils;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.AddressDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.AddressDTO;
 import br.com.eponciano.ms.booking.hotel.model.Address;
 
 

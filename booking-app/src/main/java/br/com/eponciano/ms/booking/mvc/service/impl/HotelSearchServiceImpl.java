@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.RoomDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.RoomType;
+import br.com.eponciano.ms.booking.commons.model.dto.RoomDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.RoomType;
 import br.com.eponciano.ms.booking.mvc.model.Hotel;
 import br.com.eponciano.ms.booking.mvc.model.dto.AddressDTO;
 import br.com.eponciano.ms.booking.mvc.model.dto.HotelAvailabilityDTO;

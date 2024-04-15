@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.BookingInitiationDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.BookingInitiationDTO;
 import br.com.eponciano.ms.booking.mvc.model.dto.HotelAvailabilityDTO;
 import br.com.eponciano.ms.booking.mvc.model.dto.HotelSearchDTO;
 import br.com.eponciano.ms.booking.mvc.service.HotelSearchService;

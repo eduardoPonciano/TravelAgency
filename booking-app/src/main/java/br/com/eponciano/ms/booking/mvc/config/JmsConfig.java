@@ -11,7 +11,7 @@ public class JmsConfig {
 	@Bean
 	public ActiveMQConnectionFactory activeMQConnectionFactory() {
 	    ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory("tcp://localhost:61616");
-	    factory.setTrustedPackages(Arrays.asList("br.com.eduardo.ponciano.travel.commons.model.dto"));
+	    factory.setTrustedPackages(Arrays.asList("br.com.eponciano.travel.commons.model.dto"));
 	    return factory;
 	}
 }

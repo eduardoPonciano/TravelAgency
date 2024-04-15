@@ -1,0 +1,22 @@
+version: '3.8'  # Versão do Docker Compose
+
+services:
+  postgres:
+    image: postgres:latest  # Imagem do PostgreSQL
+    container_name: postgres_container  # Nome do contêiner
+    environment:
+      POSTGRES_PASSWORD: 1234  # Senha do usuário postgres
+    ports:
+      - '5432:5432'  # Mapeamento da porta 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data  # Volume para persistência de dados
+
+  activemq:
+    image: rmohr/activemq:latest  # Imagem do ActiveMQ
+    container_name: activemq_container  # Nome do contêiner
+    ports:
+      - '61616:61616'  # Porta para comunicação JMS
+      - '8161:8161'  # Porta para console web
+
+volumes:
+  pgdata:

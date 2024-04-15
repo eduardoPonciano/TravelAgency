@@ -5,11 +5,11 @@ import java.util.stream.Collectors;
 
 import org.springframework.util.StringUtils;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.AddressDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.BookingDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.HotelRegistrationDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.RoomDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.AddressDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.BookingDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.HotelRegistrationDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.RoomDTO;
 import br.com.eponciano.ms.booking.hotel.model.Address;
 import br.com.eponciano.ms.booking.hotel.model.Hotel;
 import br.com.eponciano.ms.booking.hotel.model.Room;

@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import br.com.eduardo.ponciano.travel.commons.model.dto.AiplaneDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.BookingInitiationDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.CarDTO;
-import br.com.eduardo.ponciano.travel.commons.model.dto.ProcesssBookingDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.AiplaneDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.BookingInitiationDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.CarDTO;
+import br.com.eponciano.ms.booking.commons.model.dto.ProcesssBookingDTO;
 import jakarta.jms.JMSException;
 import jakarta.jms.Message;
 import jakarta.jms.Session;

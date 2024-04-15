@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     
-    <artifactId>travel-agency-user</artifactId>
+    <artifactId>booking-user</artifactId>
     <name>Travel Agency User Microservice</name>
     <description>Travel Agency User Microservice Module</description>
     
