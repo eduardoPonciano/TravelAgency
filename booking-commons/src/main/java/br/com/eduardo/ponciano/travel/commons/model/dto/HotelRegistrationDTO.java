@@ -23,7 +23,7 @@ public class HotelRegistrationDTO {
     @Pattern(regexp = "^(?!\\s*$)[A-Za-zÀ-ú0-9\\s]+$", message = "Hotel  deve conter somente letras e numeros")
     private String name;
     
-    private Long mmanagerId;
+    private Long managerId;
 
     @Valid
     @JsonAlias("address")
