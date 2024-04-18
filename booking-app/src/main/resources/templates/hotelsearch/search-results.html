@@ -70,10 +70,10 @@
 	                                            <p class="card-text fw-bold">Preço da diária</p>
 	                                            <th:block th:each="room : ${hotel.roomDTOs}">
 	                                                <p class="card-text" th:if="${room.roomType.name() == 'SOLTEIRO'}">
-	                                                    R$ <span th:text="${room.pricePerNight}"></span>
+	                                                    R$ <span th:text="${room.dailyPrice}"></span>
 	                                                </p>
 	                                                <p class="card-text" th:if="${room.roomType.name() == 'CASAL'}">
-	                                                    R$ <span th:text="${room.pricePerNight}"></span>
+	                                                    R$ <span th:text="${room.dailyPrice}"></span>
 	                                                </p>
 	                                            </th:block>
 	                                        </div>

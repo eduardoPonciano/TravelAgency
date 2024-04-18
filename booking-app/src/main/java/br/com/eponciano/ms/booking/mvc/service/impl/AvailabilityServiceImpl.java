@@ -32,7 +32,7 @@ public class AvailabilityServiceImpl implements AvailabilityService {
 
     @Override
     public Integer getMinAvailableRooms(Long roomId, LocalDate checkinDate, LocalDate checkoutDate) {
-        log.info("Fetching minimum available rooms for room ID {} from {} to {}", roomId, checkinDate, checkoutDate);
+        log.info("Buscando quartos disponíveis para o quarto de ID {} com data de {} a {}", roomId, checkinDate, checkoutDate);
 
         Room room = roomService.findRoomById(roomId).orElseThrow(() -> new EntityNotFoundException("Room not found"));
 

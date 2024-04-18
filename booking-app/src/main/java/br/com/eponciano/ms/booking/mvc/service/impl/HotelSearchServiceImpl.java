@@ -38,26 +38,26 @@ public class HotelSearchServiceImpl implements HotelSearchService {
     public List<HotelAvailabilityDTO> findAvailableHotelsByCityAndDate(String city, LocalDate checkinDate, LocalDate checkoutDate) {
         validateCheckinAndCheckoutDates(checkinDate, checkoutDate);
 
-        log.info("Attempting to find hotels in {} with available rooms from {} to {}", city, checkinDate, checkoutDate);
+        log.info("Buscando hoteis em {} com quartos disponiveis de {} a {}", city, checkinDate, checkoutDate);
 
-        // Number of days between check-in and check-out
+        // Número de dias entre check-in e check-out
         Long numberOfDays = ChronoUnit.DAYS.between(checkinDate, checkoutDate);
 
-        // 1. Fetch hotels that satisfy the criteria (min 1 available room throughout the booking range)
+        // 1. Busque hotéis que atendam aos critérios (mín. 1 quarto disponível em toda a faixa de reserva)
         List<Hotel> hotelsWithAvailableRooms = hotelRepository.findHotelsWithAvailableRooms(city, checkinDate, checkoutDate, numberOfDays);
 
-        // 2. Fetch hotels that don't have any availability records for the entire booking range
+        // 2. Buscar hotéis que não possuem registros de disponibilidade para toda a faixa de reserva
         List<Hotel> hotelsWithoutAvailabilityRecords = hotelRepository.findHotelsWithoutAvailabilityRecords(city, checkinDate, checkoutDate);
 
-        // 3. Fetch hotels with partial availability; some days with records meeting the criteria and some days without any records
+        // 3. Buscar hotéis que não possuam registros de disponibilidade para toda a faixa de reserva
         List<Hotel> hotelsWithPartialAvailabilityRecords = hotelRepository.findHotelsWithPartialAvailabilityRecords(city, checkinDate, checkoutDate, numberOfDays);
 
-        // Combine and deduplicate the hotels using a Set
+        // Combine e desduplique os hotéis usando um conjunto
         Set<Hotel> combinedHotels = new HashSet<>(hotelsWithAvailableRooms);
         combinedHotels.addAll(hotelsWithoutAvailabilityRecords);
         combinedHotels.addAll(hotelsWithPartialAvailabilityRecords);
 
-        log.info("Successfully found {} hotels with available rooms", combinedHotels.size());
+        log.info("Encontrado {} hotel(s) com quarto(s) disponivei(s)", combinedHotels.size());
 
         // Convert the combined hotel list to DTOs for the response
         return combinedHotels.stream()
@@ -97,19 +97,19 @@ public class HotelSearchServiceImpl implements HotelSearchService {
                 .roomDTOs(roomDTOs)
                 .build();
         
-        // For each room type, find the minimum available rooms across the date range
+        // Para cada tipo de quarto, encontre o número mínimo de quartos disponíveis no período
         int maxAvailableSingleRooms = hotel.getRooms().stream()
                 .filter(room -> room.getRoomType() == RoomType.SOLTEIRO)
                 .mapToInt(room -> availabilityService.getMinAvailableRooms(room.getId(), checkinDate, checkoutDate))
                 .max()
-                .orElse(0); // Assume no single rooms if none match the filter
+                .orElse(0); // Suponha que não haja quartos individuais se nenhum corresponder ao filtro
         hotelAvailabilityDTO.setMaxAvailableSingleRooms(maxAvailableSingleRooms);
 
         int maxAvailableDoubleRooms = hotel.getRooms().stream()
                 .filter(room -> room.getRoomType() == RoomType.CASAL)
                 .mapToInt(room -> availabilityService.getMinAvailableRooms(room.getId(), checkinDate, checkoutDate))
                 .max()
-                .orElse(0); // Assume no double rooms if none match the filter
+                .orElse(0); // Suponha que não haja quartos duplos se nenhum corresponder ao filtro
         hotelAvailabilityDTO.setMaxAvailableDoubleRooms(maxAvailableDoubleRooms);
 
         return hotelAvailabilityDTO;

@@ -23,8 +23,8 @@ public interface HotelRepository extends JpaRepository<Hotel, Long> {
 
     @Query("SELECT h FROM Hotel h WHERE "
     		+ "(:id is not null and h.id = :id)"
-    		+ "and (:name is not null and h.name = :name)"
-    		+ "and (:managerId is not null and h.managerId = :managerId)"
+    		+ "or (:name is not null and h.name = :name)"
+    		+ "or (:managerId is not null and h.managerId = :managerId)"
     		)
     Hotel findByParameters(@Param("id") Long id, @Param("name") String name, @Param("managerId") Long managerId);
     

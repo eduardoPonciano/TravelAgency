@@ -51,10 +51,10 @@
                                 <span th:if="${room.roomType.name() == 'CASAL'}"><i class="bi-person-fill"></i><i
                                         class="bi-person-fill"></i></span>
                             </td>
-                            <td th:utext="'$ ' + ${#numbers.formatDecimal(room.pricePerNight * durationDays, 0, 'COMMA', 2, 'POINT')}">Preço</td>
+                            <td th:utext="'R$ ' + ${#numbers.formatDecimal(room.dailyPrice * durationDays, 0, 'COMMA', 2, 'POINT')}">Preço</td>
                             <td>
                                 <select class="form-select room-select"
-                                        th:data-duration-price="${room.pricePerNight * durationDays}">
+                                        th:data-duration-price="${room.dailyPrice * durationDays}">
                                     <option th:if="${room.roomType.name() == 'SOLTEIRO'}"
                                             th:each="num : ${#numbers.sequence(0, hotel.maxAvailableSingleRooms)}"
                                             th:value="${num}" th:text="${num}"></option>
@@ -113,7 +113,7 @@
 
             // Function to format the price with two decimal places and thousand separators
             function formatPrice(price) {
-                return '$ ' + price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                return 'R$ ' + price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
 
             // Calculate the total cost

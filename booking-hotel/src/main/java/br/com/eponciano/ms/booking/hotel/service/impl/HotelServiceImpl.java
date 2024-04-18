@@ -59,7 +59,7 @@ public class HotelServiceImpl implements  HotelService{
     
     @Override
     public HotelDTO findByParameters(Long id, String name, Long managerId) {
-		if (id == null || name == null) {
+		if (id == null && name == null) {
     		new ValidationException("Parametros incorretos");
     	}
 		Hotel hotel = hotelRepository.findByParameters(id, name, managerId);

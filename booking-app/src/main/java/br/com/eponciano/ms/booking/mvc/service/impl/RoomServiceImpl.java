@@ -97,7 +97,7 @@ public class RoomServiceImpl implements RoomService {
                 .id(room.getId())
                 .hotelId(room.getHotel().getId())
                 .typeBedId(null)
-//                .roomType(room.getRoomType())
+                .roomType(room.getRoomType())
                 .roomCount(room.getRoomCount())
                 .dailyPrice(new BigDecimal(room.getPricePerNight()))
                 .build();

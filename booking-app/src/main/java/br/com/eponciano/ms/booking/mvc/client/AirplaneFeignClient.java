@@ -14,7 +14,7 @@ import br.com.eponciano.ms.booking.mvc.model.dto.ResetPasswordDTO;
 import br.com.eponciano.ms.booking.mvc.model.dto.UserDTO;
 import br.com.eponciano.ms.booking.mvc.model.dto.UserRegistrationDTO;
 
-@FeignClient(name = "airPlane-service", url = "${aiplane.service.url}")
+@FeignClient(name = "airPlane-service", url = "${airplane.service.url}")
 public interface AirplaneFeignClient {
 
     @GetMapping("/airPlane")

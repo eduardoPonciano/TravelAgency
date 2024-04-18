@@ -51,8 +51,8 @@ public class HotelManagerController {
     public String showAddHotelForm(Model model) {
         HotelRegistrationDTO hotelRegistrationDTO = new HotelRegistrationDTO();
 
-        RoomDTO singleRoom = new RoomDTO(null, null, null, 0, BigDecimal.ZERO);
-        RoomDTO doubleRoom = new RoomDTO(null, null, null, 0, BigDecimal.ZERO);
+        RoomDTO singleRoom = new RoomDTO(null, null, null, 0, null,BigDecimal.ZERO);
+        RoomDTO doubleRoom = new RoomDTO(null, null, null, 0, null, BigDecimal.ZERO);
         hotelRegistrationDTO.getRoomDTOs().add(singleRoom);
         hotelRegistrationDTO.getRoomDTOs().add(doubleRoom);
 
