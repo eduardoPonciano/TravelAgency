@@ -53,7 +53,7 @@ Essa abordagem permite uma comunicação assíncrona entre os serviços, garanti
    
    Execute o comando abaixo para clonar o repositório do projeto
 
-   `git clone https://github.com/seu-usuario/seu-projeto.git`
+   `git clone https://github.com/eduardoPonciano/TravelAgency.git`
 
 2. **Configuração com Docker Compose**
    
